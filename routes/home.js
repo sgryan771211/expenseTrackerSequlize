@@ -8,7 +8,19 @@ const User = db.User
 const { authenticated } = require('../config/auth')
 
 router.get('/', authenticated, (req, res) => {
-  res.send('列出全部 Record')
+  Record.findAll({
+    where: {
+      UserId: req.user.id
+    }
+  })
+    .then((records) => {
+
+      let totalAmount = 0
+      for (record of records) {
+        totalAmount += record.amount
+      }
+      return res.render('index', { records: records, totalAmount: totalAmount })
+    })
 })
 
 module.exports = router
