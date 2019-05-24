@@ -31,16 +31,16 @@ require('./config/passport')(passport)
 
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
   next()
 })
 
-// 設定路由
-// 首頁
-app.get('/', (req, res) => {
-  res.send('hello')
-})
+// 路由器
+app.use('/', require('./routes/home'))
 app.use('/users', require('./routes/user'))
+app.use('/record', require('./routes/record'))
 
 app.listen(port, () => {
+  db.sequelize.sync()
   console.log(`app is running at port ${port}`)
 })
