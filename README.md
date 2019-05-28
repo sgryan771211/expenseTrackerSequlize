@@ -36,6 +36,7 @@ https://dev.mysql.com/downloads/mysql
 輸入 npx sequelize-cli db:seed:all
 ```
 6. 建立facebook 登入
+```
 前往 https://developers.facebook.com/ 設定一個應用程式
 在Facebook 登入的設定中，「有效的 OAuth 重新導向 URI」
 輸入以下網址：http://localhost:3000/auth/facebook/callback
@@ -45,6 +46,7 @@ https://dev.mysql.com/downloads/mysql
 FACEBOOK_ID=應用程式編號
 FACEBOOK_SECRET=應用程式密鑰
 FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+```
 7. 執行 app.js 檔案
 ```
 輸入 npm run start
